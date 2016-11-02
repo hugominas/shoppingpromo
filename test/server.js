@@ -32,7 +32,7 @@ describe('check if server run succefully', () => {
       url: '/cart',
       payload:{
         data:{
-          items:['item1', 'item2', 'item3']
+          order:{}
         }
       }
     };

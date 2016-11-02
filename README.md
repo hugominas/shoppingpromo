@@ -15,8 +15,9 @@ Mock models are created to provide information about the customer and product to
 
 1. Clone the repo
 2. Run "npm install" in the project folder
-3. Run "node app_discCart" to run the application
-4. Aplication is now running on port 3008, now you can post to /cart/ your items to be processed
+3. Edit config/server.js with your desired configurations 
+4. Run "node app_discCart" to run the application
+5. Aplication is now running on port 3008, now you can post to /cart/ your items to be processed
 
 ## How to test
 
