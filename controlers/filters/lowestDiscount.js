@@ -20,21 +20,29 @@ lowestDiscount.prototype.processItems = function(order){
 
       //if enough items
       if(categoryItems.lenght>=2){
+
+        //save original price
+        if(!item.originalPrice)item.originalPrice = parseFloat(item['unit-price']);
+
         //sort items so that lowest price is the first
         let discountItem = categoryItems.sort(function(a, b){return b['unit-price']-a['unit-price']})[0];
+
         //apply discount
         discountItem['unit-price']=discountItem['unit-price']-(discountItem['unit-price']*this.discount);
         discountItem.discount = discountItem.discount ? discountItem.discount.push(this.discountName) : [this.discountName];
+
+        // Change total price
         let oldTotal = discountItem.total;
         discountItem.total=discountItem['unit-price']*discountItem.quantity;
         discountItem.total=parseFloat(discountItem.total.toFixed(2))
+
         //update price dif to remote from total
         newTotal = oldTotal-discountItem.total;
         //update toltal
         order.total = parseFloat(newTotal.toFixed(2));
       }
 
-    
+
     resolve(order)
   })
 }

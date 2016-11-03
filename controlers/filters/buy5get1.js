@@ -15,9 +15,14 @@ oneextra.prototype.processItems = function(order){
       order.items.map((item)=>{
         let productDetails = products.getById(item['product-id']);
         if(productDetails.category == this.category){
+
+          //Save origanl price
+          if(!item.originalPrice)item.originalPrice = parseFloat(item['unit-price']);
+
           //get the number of items to discount from price
           let totalToDiscount = parseInt((item.quantity/5));
           let totalDiscount = totalToDiscount*item['unit-price'];
+
           //reacal unit price
           item.total=item.total-totalDiscount;
           item.total=parseFloat(item.total.toFixed(2))

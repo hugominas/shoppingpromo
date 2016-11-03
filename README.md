@@ -1,8 +1,13 @@
 # Shopping cart update
 
-Routes provider microservice for shopping cart price update according to promotions and other business logic.
-Cart item posted to internal route and replied with shopping cart totals and promotion description
+Discount provider microservice for shopping cart price update according to promotions and other business logic.
+Cart item posted to internal route and replied with shopping cart totals and discount description.
 
+And array with all the applied discounts is stored in the item object. Each discount the customer is entitled to is applied to the original price of the item.
+
+[{name:'Amazing discount', discount: 4.96, newUnitPrice:41}, name:'Another Amazing discount', discount: 10, newUnitPrice:35.96}]
+
+All totals are recalculated and sent back in the reply object with the property "discount".
 
 ## How it works
 

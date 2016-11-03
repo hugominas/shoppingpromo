@@ -16,15 +16,23 @@ goodCustomer.prototype.processItems = function(order){
       let newTotal = 0;
       //apply discount
       order.items.map((item)=>{
+        //save original price
+        if(!item.originalPrice)item.originalPrice = parseFloat(item['unit-price']);
+
         //reacal unit price
-        item['unit-price']=item['unit-price']-(item['unit-price']*this.discount);
-        item['unit-price']=parseFloat(item['unit-price'].toFixed(2))
+        let discounted = (item.originalPrice*this.discount).toFixed(2);
+        item['unit-price']=parseFloat((item['unit-price']-discounted).toFixed(2))
 
         //calculate from unit price
         item.total=item['unit-price']*item.quantity;
         item.total=parseFloat(item.total.toFixed(2))
+
         newTotal += item.total;
-        item.discount = item.discount ? item.discount.push(this.discountName) : [this.discountName];
+
+        //Save object with to discount array
+        let appliedDiscount = {name:this.discountName, discount: discounted, newUnitPrice:item['unit-price']};
+        item.discount = item.discount ? item.discount.push(appliedDiscount) : [appliedDiscount];
+
       })
       // update cart totals
       order.total = parseFloat(newTotal.toFixed(2));

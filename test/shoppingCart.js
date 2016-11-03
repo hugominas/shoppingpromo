@@ -2,6 +2,7 @@
 
 const chai = require('chai');
 const server = require('../app_discCart');
+const goodCustomer = require('../controlers/filters/goodCustomer');
 
 // Using Expect style
 let expect = chai.expect;
@@ -79,11 +80,14 @@ describe('order process', () => {
     };
     server.inject(optionItems3, (response) => {
       let payload = JSON.parse(response.payload);
+
       expect(response.statusCode).to.equal(200);
-      expect(payload.total).to.equal(89.46);
+
+      payload.items[0].discount.map((itemDiscount)=>{
+        expect(itemDiscount).to.contain.any.keys({name:goodCustomer.discountName});
+      })
+
       done();
-      // WE ARE ALL DON SERVER
-      server.stop();
     });
 
   });
@@ -109,8 +113,15 @@ describe('order process', () => {
     };
     server.inject(optionItems3, (response) => {
       let payload = JSON.parse(response.payload);
+
       expect(response.statusCode).to.equal(200);
-      expect(payload.total).to.equal(24.95);
+
+      if(payload.items[0].discount && payload.items[0].discount.lenght>0){
+        payload.items[0].discount.map((itemDiscount)=>{
+          expect(itemDiscount).to.not.contain.any.keys({name:goodCustomer.discountName});
+        })
+      }
+
       done();
       // WE ARE ALL DON SERVER
       server.stop();
