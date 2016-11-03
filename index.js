@@ -1,10 +1,11 @@
 'use strict';
 const Hapi 		= require("hapi");
 const routes 	= require('./routes');
-const config 	= require('./config/server');
+const config 	= require('./config/server').config;
 
 // Create a server with a host and port
 const server = new Hapi.Server();
+
 server.connection({
     host: config.host,
     port: config.port

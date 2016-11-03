@@ -1,6 +1,6 @@
 'use strict';
 
-const ShoppingCart = require('./controlers/shoppingCart/process');
+const ShoppingCart = require('./controllers/shoppingCart/process');
 
 // endpoints for cart update
 exports.endpoints = [

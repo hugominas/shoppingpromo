@@ -10,4 +10,4 @@ module.exports = [
   goodCustomer,
   buy5get1,
   lowestDiscount
-]
+];

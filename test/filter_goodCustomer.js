@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const server = require('../');
-const goodCustomer = require('../controlers/filters/goodCustomer');
+const goodCustomer = require('../controllers/filters/goodCustomer');
 
 // Using Expect style
 let expect = chai.expect;
@@ -46,6 +46,7 @@ describe('test good customer discount', () => {
       })
 
       expect(found).to.be.true;
+      expect(optionItems3.payload.order.total).to.be.above(payload.total)
       expect(payload.total).to.equal((payload.items[0].total + payload.items[1].total))
 
       done();

@@ -4,14 +4,14 @@ Discount provider microservice for shopping cart price update according to promo
 
 Cart item posted to internal route and replied with shopping cart totals and discount description.
 
-Because there are no clear guidelines on how the hierarchy of promotional discounts are applied to each shopping cart request. I have made the aplication apply them all if each criteria is met.
+Because there are no clear guidelines on how the hierarchy of promotional discounts are applied to each shopping cart request. I have made the application apply them all if each criteria is met.
 
 However if we need to only apply one discount the change should be simple as we will just need assign a new object instead of the shared one, and then apply the rules.
 
 ## How it works
 
 Hapijs routes validated with joi adhering to ES6 standard, Babel not required
-unit test done with mocha and chai, the application is only backend and "npm run watch" for better tdd develoment  
+unit test done with mocha and chai, the application is only backend and "npm run watch" for better tdd development  
 
 Mock models are created to provide information about the customer and product to the shopping cart handler.
 
@@ -23,12 +23,12 @@ All totals are recalculated and sent back in the reply object with the property 
 
 ## How to add new filters
 
-The shopping cart runs through all filters listed in the controlers/filters/index each filter changes the object in its way the result of the iteration is replied back.
+The shopping cart runs through all filters listed in the controllers/filters/index each filter changes the object in its way the result of the iteration is replied back.
 To add a new filter you just need to:
 
-1. create a new file inside the controlers/filters folder
+1. create a new file inside the controllers/filters folder
 2. the file should should resolve a promise when done, please follow the templateFilter.js file inside the filters folder
-3. require the file inside the controlers/filter/index and add it to the exports array
+3. require the file inside the controllers/filter/index and add it to the exports array
 
 ## How to deploy
 
@@ -41,7 +41,7 @@ To add a new filter you just need to:
 ## How to test
 
 - Run "npm test" in the project folder
-- Run "npm run watch" in the project folder for countinus test upon file change
+- Run "npm run watch" in the project folder for continues test upon file change
 - Run "npm run lint" for lint test output
 
 ## TO CHECK

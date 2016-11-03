@@ -1,5 +1,4 @@
-
 exports.config ={
-    port:   3008,
-    host:   'localhost'
-}
+  port:   3008,
+  host:   'localhost'
+};

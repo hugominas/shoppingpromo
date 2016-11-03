@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const server = require('../');
-const lowestDiscount = require('../controlers/filters/lowestDiscount');
+const lowestDiscount = require('../controllers/filters/lowestDiscount');
 
 // Using Expect style
 let expect = chai.expect;
@@ -126,6 +126,7 @@ describe('test Special Category 20% off', () => {
         })
       }
       expect(found).to.be.true;
+      expect(optionItems3.payload.order.total).to.be.above(payload.total)
       expect(payload.total).to.equal(parseFloat((parseFloat(payload.items[0].total)+parseFloat(payload.items[1].total)).toFixed(2)))
 
       done();
@@ -174,7 +175,7 @@ describe('test Special Category 20% off', () => {
           })
         }
         //manual check
-        expect(payload.total).to.equal(parseFloat(payload.items[0].total + payload.items[1].total))
+        expect(payload.total).to.equal(parseFloat(payload.items[0].total + payload.items[1].total));
         expect(found).to.be.false;
 
         done();
