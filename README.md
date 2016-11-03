@@ -42,7 +42,6 @@ To add a new filter you just need to:
 
 - Run "npm test" in the project folder
 - Run "npm run watch" in the project folder for continues test upon file change
-- Run "npm run lint" for lint test output
 
 ## TO CHECK
 

@@ -11,8 +11,10 @@ oneextra.prototype.processItems = function(order){
   return new Promise ((resolve, reject) => {
     let newTotal = 0;
 
+    if (order.items.length==0) { reject(); }
+
     //check product cats
-    order.items.map((item)=>{
+    order.items.map((item) => {
 
       let productDetails = products.getById(item['product-id']);
 
