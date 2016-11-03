@@ -12,7 +12,6 @@ describe('order process', () => {
       method: 'POST',
       url: '/cart',
       payload:{
-        data:{
           order:{
             "customer-id": "1",
             "items": [
@@ -25,7 +24,6 @@ describe('order process', () => {
             ],
             "total": "49.90"
           }
-        }
       }
     };
     server.inject(optionItems1, (response) => {
@@ -39,14 +37,12 @@ describe('order process', () => {
       method: 'POST',
       url: '/cart',
       payload:{
-        data:{
-          "id": "1",
           order:{
+            "id": "1",
             "customer-id": "1",
             "items": [],
             "total": ""
           }
-        }
       }
     };
     server.inject(optionItems2, (response) => {
@@ -54,30 +50,36 @@ describe('order process', () => {
       done();
     });
   });
-  it('post order to cart', (done) => {
+
+  it('post order to cart good customer discount > €1000', (done) => {
     let optionItems3 = {
       method: 'POST',
       url: '/cart',
       payload:{
-        data:{
           order:{
             "id": "1",
-            "customer-id": "1",
+            "customer-id": "2",
             "items": [
               {
                 "product-id": "B102",
                 "quantity": "10",
                 "unit-price": "4.99",
                 "total": "49.90"
+              },
+              {
+                "product-id": "A102",
+                "quantity": "1",
+                "unit-price": "49.50",
+                "total": "49.50"
               }
             ],
-            "total": "49.90"
+            "total": "99.4"
           }
-        }
       }
     };
     server.inject(optionItems3, (response) => {
-      expect(response.statusCode).to.equal(400);
+      expect(response.statusCode).to.equal(200);
+      expect(response.payload.order.total).to.equal(89.46);
       done();
       // WE ARE ALL DON SERVER
       server.stop();

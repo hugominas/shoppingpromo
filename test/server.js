@@ -31,13 +31,11 @@ describe('check if server run succefully', () => {
       method: 'POST',
       url: '/cart',
       payload:{
-        data:{
           order:{}
-        }
       }
     };
     server.inject(optionItems, (response) => {
-      expect(response.statusCode).to.equal(200);
+      expect(response.statusCode).to.equal(400);
       done();
       // WE ARE ALL DON SERVER
       server.stop();
