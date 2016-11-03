@@ -78,11 +78,44 @@ describe('order process', () => {
       }
     };
     server.inject(optionItems3, (response) => {
+      let payload = JSON.parse(response.payload);
       expect(response.statusCode).to.equal(200);
-      expect(response.payload.order.total).to.equal(89.46);
+      expect(payload.total).to.equal(89.46);
       done();
       // WE ARE ALL DON SERVER
       server.stop();
     });
+
   });
+  it('post order to cart of not good customer so no discount', (done) => {
+    let optionItems3 = {
+      method: 'POST',
+      url: '/cart',
+      payload:{
+          order:{
+              "id": "2",
+              "customer-id": "1",
+              "items": [
+                {
+                  "product-id": "B102",
+                  "quantity": "5",
+                  "unit-price": "4.99",
+                  "total": "24.95"
+                }
+              ],
+              "total": "24.95"
+          }
+      }
+    };
+    server.inject(optionItems3, (response) => {
+      let payload = JSON.parse(response.payload);
+      expect(response.statusCode).to.equal(200);
+      expect(payload.total).to.equal(24.95);
+      done();
+      // WE ARE ALL DON SERVER
+      server.stop();
+    });
+
+  });
+
 });

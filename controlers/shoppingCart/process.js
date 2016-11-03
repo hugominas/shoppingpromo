@@ -28,6 +28,7 @@ process.prototype.postRoute = function(){
       if(_this.cart.items && _this.cart.id && _this.cart['customer-id'] && _this.cart.total){
         // process items
         _this.processItems().then((result)=>{
+          console.log(result)
           reply(result);
         }).catch((err)=>{
           reply({status:'NOK', message:err}).code(400)
@@ -55,6 +56,7 @@ process.prototype.processItems = function(){
       // no need to create new object Object.assign({},_this.cart)
       applyFilters.push(runFilter.processItems(newCart));
     })
+
 
     // run promises
     Promise.all(applyFilters).then((results) => {

@@ -10,7 +10,6 @@ Hapijs routes validated with joi adhering to ES6 standars, Babel not required
 unit test done with mocha and chai, the application is only backend and "npm run watch" for better tdd develoment  
 
 Mock models are created to provide information about the customer and product to the shopping cart handler.
-The models use the json files as a db to look up by id
 
 ## How to add new filters
 
@@ -34,3 +33,8 @@ To add a new filter you just need to:
 - Run "npm test" in the project folder
 - Run "npm run watch" in the project folder for countinus test upon file change
 - Run "npm run lint" for lint test output
+
+## TO CHECK
+
+1. Can a customer get more than one discount?
+2. Are the discounts applied to the base price of the item?
