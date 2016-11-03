@@ -56,7 +56,6 @@ process.prototype.processItems = function(){
       applyFilters.push(runFilter.processItems(newCart));
     })
 
-
     // run promises
     Promise.all(applyFilters).then((results) => {
       //process results

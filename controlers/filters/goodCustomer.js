@@ -31,7 +31,9 @@ goodCustomer.prototype.processItems = function(order){
 
         //Save object with to discount array
         let appliedDiscount = {name:this.discountName, discount: discounted, newUnitPrice:item['unit-price']};
-        item.discount = item.discount ? item.discount.push(appliedDiscount) : [appliedDiscount];
+        // start new discount
+        item.discount = item.discount ? item.discount : [];
+        item.discount.push(appliedDiscount);
 
       })
       // update cart totals

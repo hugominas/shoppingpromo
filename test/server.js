@@ -1,7 +1,7 @@
 'use strict';
 
 const chai = require('chai');
-const server = require('../app_discCart');
+const server = require('../');
 
 // Using Expect style
 let expect = chai.expect;

@@ -2,7 +2,7 @@
   "name": "node-shoppingcart-discounts",
   "version": "1.0.0",
   "description": "Promotional discounts applied to shopping carts",
-  "main": "app/shoppingCartDiscounts.js",
+  "main": "app/index.js",
   "directories": {
     "test": "test"
   },
