@@ -37,6 +37,13 @@ To add a new filter you just need to:
 3. Edit config/server.js with your desired configurations
 4. Run "node index" to run the application
 5. Aplication is now running on port 3008, now you can post to /cart/ your items to be processed
+6. You can also process your order like:
+
+    const processCart = require('./controllers/shoppingCart/process');
+
+    processCart.processItems(yourOrder).then((result) => {
+      // yourOrder should be updated
+    }).catch(err => console.log(err))
 
 ## How to test
 
