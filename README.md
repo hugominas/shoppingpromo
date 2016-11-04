@@ -21,15 +21,6 @@ An array with all the applied discounts is stored in the item object. Each disco
 
 All totals are recalculated and sent back in the reply object with the property "discount".
 
-## How to add new filters
-
-The shopping cart runs through all filters listed in the controllers/filters/index each filter changes the object in its way the result of the iteration is replied back.
-To add a new filter you just need to:
-
-1. create a new file inside the controllers/filters folder
-2. the file should should resolve a promise when done, please follow the templateFilter.js file inside the filters folder
-3. require the file inside the controllers/filter/index and add it to the exports array
-
 ## How to deploy
 
 1. Clone the repo
@@ -44,6 +35,16 @@ To add a new filter you just need to:
     processCart.processItems(yourOrder).then((result) => {
       // yourOrder should be updated
     }).catch(err => console.log(err))
+
+## How to add new filters
+
+The shopping cart runs through all filters listed in the controllers/filters/index each filter changes the object in its way the result of the iteration is replied back.
+To add a new filter you just need to:
+
+1. create a new file inside the controllers/filters folder
+2. the file should should resolve a promise when done, please follow the templateFilter.js file inside the filters folder
+3. require the file inside the controllers/filter/index and add it to the exports array
+
 
 ## How to test
 
