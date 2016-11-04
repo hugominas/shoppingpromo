@@ -10,8 +10,7 @@ However if we need to only apply one discount the change should be simple as we 
 
 ## How it works
 
-Hapijs routes validated with joi, Babel not required
-unit test done with mocha and chai, the application is only backend and "npm run watch" for better tdd development  
+Hapijs routes validated with joi, Babel test done with mocha and chai, the application is only backend and "npm run watch" for better tdd development  
 
 Mock models are created to provide information about the customer and product to the shopping cart handler.
 
